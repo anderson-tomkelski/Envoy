@@ -29,5 +29,9 @@ envoy -c server.yaml
 envoy -c client.yaml --base-id 1 # --base-id 1??
 
 
+# Run service
+
+python3 server.py
+
 
 ```

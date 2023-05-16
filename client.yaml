@@ -63,6 +63,7 @@ static_resources:
           tls_certificate_sds_secret_configs:
           - name: spiffe://example.org/client
             sds_config:
+              resource_api_version: V3
               api_config_source:
                 api_type: gRPC
                 transport_api_version: V3
