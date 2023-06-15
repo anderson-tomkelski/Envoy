@@ -2,18 +2,18 @@ node:
   id: default
   cluster: client
 admin:
-  access_log_path: /tmp/admin_access0.log
+  access_log_path: /tmp/admin_access7.log
   address:
     socket_address:
       protocol: TCP
       address: 127.0.0.1
-      port_value: 10001
+      port_value: 10007
 static_resources:
   listeners:
   - name: ingress
     address:
       socket_address:
-        address: 127.0.1.18
+        address: 127.0.1.2
         port_value: 8000
     filter_chains:
     - filters:
@@ -28,9 +28,9 @@ static_resources:
               "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
               path: "/dev/stdout"
           route_config:
-            name: amf
+            name: smf
             virtual_hosts:
-              - name: amf
+              - name: smf
                 domains: ["*"]
                 routes:
                   - match:
@@ -85,7 +85,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/amf
+          - name: spiffe://example.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -105,7 +105,7 @@ static_resources:
           - endpoint:
               address:
                 socket_address:
-                  address: 127.0.0.18
+                  address: 127.0.1.18
                   port_value: 8000
     transport_socket:
       name: envoy.transport_sockets.tls
@@ -113,7 +113,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/amf
+          - name: spiffe://example.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -141,7 +141,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/amf
+          - name: spiffe://example.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -169,7 +169,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/amf
+          - name: spiffe://example.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -197,7 +197,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/amf
+          - name: spiffe://example.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -225,7 +225,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/amf
+          - name: spiffe://example.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -245,7 +245,7 @@ static_resources:
           - endpoint:
               address:
                 socket_address:
-                  address: 127.0.1.2
+                  address: 127.0.0.2
                   port_value: 8000
     transport_socket:
       name: envoy.transport_sockets.tls
@@ -253,7 +253,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/amf
+          - name: spiffe://example.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:

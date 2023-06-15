@@ -13,7 +13,7 @@ static_resources:
   - name: ingress
     address:
       socket_address:
-        address: 127.0.1.10
+        address: 127.0.1.8
         port_value: 8000
     filter_chains:
     - filters:
@@ -30,15 +30,15 @@ static_resources:
               "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
               path: "/dev/stdout"
           route_config:
-            name: nrf
+            name: upf
             virtual_hosts:
-              - name: nrf
+              - name: upf
                 domains: ["*"]
                 routes:
                   - match:
                       prefix: "/"
                     route:
-                      cluster: nrf
+                      cluster: upf
           http_filters:
           - name: envoy.filters.http.router
             typed_config:
@@ -49,7 +49,7 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
           common_tls_context:
             tls_certificate_sds_secret_configs:
-            - name: spiffe://example.org/nrf
+            - name: spiffe://example.org/upf
               sds_config:
                 resource_api_version: V3
                 api_config_source:
@@ -59,18 +59,18 @@ static_resources:
                     envoy_grpc:
                       cluster_name: spire_agent
   clusters:
-  - name: nrf
+  - name: upf
     connect_timeout: 0.25s
     type: STATIC
     lb_policy: ROUND_ROBIN
     load_assignment:
-      cluster_name: nrf
+      cluster_name: upf
       endpoints:
         - lb_endpoints:
           - endpoint:
               address:
                 socket_address:
-                  address: 127.0.0.10
+                  address: 127.0.0.8
                   port_value: 8000
   - name: spire_agent
     connect_timeout: 0.25s
