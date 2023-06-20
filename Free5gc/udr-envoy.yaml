@@ -34,13 +34,13 @@ static_resources:
                 domains: ["*"]
                 routes:
                   - match:
-                      prefix: "/nnrf-nfm/"
+                      prefix: "/nnrf"
                     route:
                       cluster: nrf
                   - match:
-                      prefix: "/nnrf-disc/"
+                      prefix: "/nudr"
                     route:
-                      cluster: nrf
+                      cluster: udr
           http_filters:
           - name: envoy.filters.http.router
             typed_config:
@@ -69,13 +69,13 @@ static_resources:
                 domains: ["*"]
                 routes:
                   - match:
-                      prefix: "/nnrf-nfm/"
+                      prefix: "/nnrf"
                     route:
                       cluster: nrf
                   - match:
-                      prefix: "/nnrf-disc/"
+                      prefix: "/nudr"
                     route:
-                      cluster: nrf
+                      cluster: udr
           http_filters:
           - name: envoy.filters.http.router
             typed_config:
@@ -124,6 +124,19 @@ static_resources:
                 grpc_services:
                   envoy_grpc:
                     cluster_name: spire_agent
+  - name: udr
+    connect_timeout: 0.25s
+    type: STRICT_DNS
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: udr
+      endpoints:
+        - lb_endpoints:
+          - endpoint:
+              address:
+                socket_address:
+                  address: 127.0.0.4
+                  port_value: 8000
   - name: spire_agent
     connect_timeout: 0.25s
     http2_protocol_options: {}
