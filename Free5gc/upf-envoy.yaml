@@ -10,10 +10,10 @@ admin:
       port_value: 10000
 static_resources:
   listeners:
-  - name: ingress
+  - name: ingress_free5gc
     address:
       socket_address:
-        address: 127.0.1.8
+        address: 127.0.2.8
         port_value: 8000
     filter_chains:
     - filters:
