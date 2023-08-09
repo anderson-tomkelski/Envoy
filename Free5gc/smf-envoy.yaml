@@ -126,7 +126,7 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
           common_tls_context:
             tls_certificate_sds_secret_configs:
-            - name: spiffe://example.org/smf
+            - name: spiffe://fiveg.org/smf
               sds_config:
                 resource_api_version: V3
                 api_config_source:
@@ -155,7 +155,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/smf
+          - name: spiffe://fiveg.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -183,7 +183,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/smf
+          - name: spiffe://fiveg.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -211,7 +211,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/smf
+          - name: spiffe://fiveg.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -239,7 +239,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/smf
+          - name: spiffe://fiveg.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -267,7 +267,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/smf
+          - name: spiffe://fiveg.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
@@ -295,7 +295,7 @@ static_resources:
         "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         common_tls_context:
           tls_certificate_sds_secret_configs:
-          - name: spiffe://example.org/smf
+          - name: spiffe://fiveg.org/smf
             sds_config:
               resource_api_version: V3
               api_config_source:
